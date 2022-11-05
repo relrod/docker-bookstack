@@ -59,7 +59,7 @@ RUN set -x; \
     && curl -sS https://getcomposer.org/installer | php -- --version=$COMPOSER_VERSION \
     && /var/www/bookstack/composer.phar install -v -d /var/www/bookstack/ \
     && rm -rf /var/www/bookstack/composer.phar /root/.composer \
-    && chown -R www-data:www-data /var/www/bookstack
+    && chown -R www-data:0 /var/www/bookstack
 
 COPY php.ini /usr/local/etc/php/php.ini
 COPY docker-entrypoint.sh /bin/docker-entrypoint.sh
