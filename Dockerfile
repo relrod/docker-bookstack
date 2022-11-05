@@ -59,15 +59,14 @@ RUN set -x; \
     && curl -sS https://getcomposer.org/installer | php -- --version=$COMPOSER_VERSION \
     && /var/www/bookstack/composer.phar install -v -d /var/www/bookstack/ \
     && rm -rf /var/www/bookstack/composer.phar /root/.composer \
-    && chown -R www-data:0 /var/www/bookstack
+    && chown -R www-data:0 /var/www/bookstack \
+    && chmod -R g+w /var/www/bookstack
 
 COPY php.ini /usr/local/etc/php/php.ini
 COPY docker-entrypoint.sh /bin/docker-entrypoint.sh
 
 WORKDIR /var/www/bookstack
 
-# www-data
-USER 33
 
 VOLUME ["/var/www/bookstack/public/uploads","/var/www/bookstack/storage/uploads"]
 
