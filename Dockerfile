@@ -52,7 +52,7 @@ RUN set -ex; \
 
 COPY bookstack.conf /etc/apache2/sites-available/000-default.conf
 
-COPY --from=bookstack --chown=33:33 /bookstack/ /var/www/bookstack/
+COPY --from=bookstack --chown=33:0 /bookstack/ /var/www/bookstack/
 
 ARG COMPOSER_VERSION=2.1.12
 RUN set -x; \
